@@ -12,3 +12,7 @@ Now enjoy the project.
 
        I have removed the packages folder. Enable your nuget package to restore the packages.I have also attached the database file. 
        
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/anik123/chat-with-angularjs-signalr-web-api---sql-server/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
