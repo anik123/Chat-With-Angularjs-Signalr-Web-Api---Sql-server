@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html data-ng-app="app">
+<head>
+    <title>Chat Me</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/font-awesome.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/toaster.min.css" rel="stylesheet" />
+
+</head>
+<body>
+
+    <div data-ng-controller="chatCtrl" class="container">
+        <div class="row pad-top pad-bottom">
+            <div class=" col-lg-5 col-md-5 col-sm-5">
+                <div class="chat-box-div">
+                    <div class="chat-box-head">
+                        GROUP CHAT HISTORY
+                        <div ng-show="user.isActive" class="btn-group pull-right">
+                            <button style="margin-top: -7px;" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <span class="fa fa-cogs"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <img data-ng-show="user.status=='Busy'" title="Busy" style="margin-top: -5px; margin-left: 5px;" src="img/chat/busy.png" />
+                            <img data-ng-show="user.status=='Online'" title="Online" style="margin-top: -5px; margin-left: 5px;" src="img/chat/online.png" />
+                            <img data-ng-show="user.status=='Invisible'" title="Invisible" style="margin-top: -5px; margin-left: 5px;" src="img/chat/invisible.png" />
+                            <ul class="dropdown-menu" role="menu">
+
+                                <li data-ng-repeat="msg in status">
+
+                                    <a href="#" data-ng-click="updateMsg(msg)"><span class="{{msg.style}}"></span>&nbsp;{{msg.type}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="messageMe" class="panel-body chat-box-main" scroll-glue>
+                        <div ng-repeat="msg in messageList" style="width: 100%">
+                            <div class="chat-box-left">
+                                <div ng-bind-html="msg.message"></div>
+
+                            </div>
+                            <div class="chat-box-name-left">
+                                <img src="img/avatar/{{msg.avatar}}.png" alt="bootstrap Chat box user image" class="img-circle" />
+                                -  {{msg.username}}
+                            </div>
+                            <hr class="hr-clas" />
+                        </div>
+
+                    </div>
+                    <div class="chat-box-footer">
+                        <div class="input-group">
+                            <input type="text" class="form-control" data-ng-hide="user.isActive" data-ng-model="user.username" placeholder="Please type username">
+                            <input type="text" data-focus-control="focusMe" class="form-control" data-ng-show="user.isActive" data-ng-model="user.message" placeholder="Enter Text Here...">
+                            <div data-ng-show="user.isActive" class="input-group-addon">
+                                <a href="#" data-toggle="dropdown" aria-expanded="false">
+                                    <img src="img/chat/smile.png" /></a>
+
+                                <div class="dropdown-menu dropdown-menu-right" role="menu">
+                                    <span ng-repeat="message in EmoticonsList">&nbsp;<span><a href="javascript:;" ng-click="addSmilie(message)">
+                                        <img src="img/smilies/{{message.image}}"></a>
+
+                                    </span>
+                                        <br ng-if="($index+1)%4==0" />
+                                    </span>
+
+                                </div>
+
+                            </div>
+                            <span class="input-group-btn">
+                                <button class="btn btn-info" type="button" ng-disabled="button.inactive" ng-click="manageMessage()">{{user.button}}</button>
+                            </span>
+
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Smile Test -->
+                <!-- Test End -->
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                <div class="chat-box-online-div">
+                    <div class="chat-box-online-head">
+                        ONLINE USERS ({{userList.length}})
+                   
+                    </div>
+                    <div class="panel-body chat-box-online">
+                        <div data-ng-repeat="chatUser in userList">
+                            <div ng-if="chatUser.Status!='Invisible'">
+                                <div class="chat-box-online-left">
+                                    <img class="img-circle" alt="bootstrap Chat box user image" src="img/avatar/{{chatUser.Avater}}.png">
+                                    -  {{chatUser.UserID}}    ( <small>{{chatUser.Status}}</small> )                         
+                                </div>
+                                <hr ng-if="$index!=userList.length-1" class="hr-clas-low">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Scripts -->
+    <script src="Scripts/jquery-2.1.3.js"></script>
+    <script type="text/javascript">
+        var CONTROL = {
+            setFocus: setFocus
+        };
+
+        function setFocus(properyName) {
+            try {
+                var timeout = setTimeout(function () {
+                    var element = $(document).find("[data-focus-control='" + properyName + "']");
+                    element.length > 0 ? element[0].focus() : void 0;
+                    clearTimeout(timeout);
+                }, 100);
+            } catch (ex) {
+                throw ex;
+            }
+        }
+    </script>
+    <script src="Scripts/bootstrap.js"></script>
+    <script src="Scripts/jquery.signalR-2.2.0.js"></script>
+    <script src="Scripts/linq.js"></script>
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-sanitize.min.js"></script>
+    <script src="Scripts/scrollglue.js"></script>
+
+    <script src="Scripts/angular-animate.js"></script>
+    <script src="Scripts/toastr.js"></script>
+    <script src="app/app.js"></script>
+
+    <script src="app/Service/chatSvc.js"></script>
+    <script src="app/Controller/chatCtrl.js"></script>
+
+
+</body>
+</html>
