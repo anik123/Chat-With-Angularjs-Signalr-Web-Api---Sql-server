@@ -4,7 +4,7 @@ This project made using angularjs,signalr 2.0,web api 2.0 and sql server 2012.
 
 View of the Project
 
-![alt tag](https://www.dropbox.com/s/00c9eu5bhynw9i2/chat.PNG)
+![alt tag](http://i59.tinypic.com/29fq99c.jpg)
 
 Now enjoy the project.
 
