@@ -1,4 +1,4 @@
-# Chat With Angularjs,Signalr,Web Api & Sql-server
+# Chat With Angularjs,Signalr,Web Api & Sql-server [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/anik123/chat-with-angularjs-signalr-web-api---sql-server/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 This project made using angularjs,signalr 2.0,web api 2.0 and sql server 2012.
 
@@ -14,5 +14,5 @@ Now enjoy the project.
        
 
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/anik123/chat-with-angularjs-signalr-web-api---sql-server/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
 
