@@ -10,7 +10,8 @@ Now enjoy the project.
 
 #N.B. : 
 
-       I have removed the packages folder. Enable your nuget package to restore the packages.I have also attached the database file. 
+
+I have removed the packages folder. Enable your nuget package to restore the packages.I have also attached the database file. 
        
 
 
